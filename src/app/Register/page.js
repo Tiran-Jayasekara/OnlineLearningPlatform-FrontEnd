@@ -4,7 +4,7 @@ import StudentService from '@/service/studentService';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
-import React, { useContext, useState } from 'react'
+import React, { useState } from 'react'
 import { toast } from 'react-toastify';
 
 const Register = () => {
@@ -16,7 +16,7 @@ const Register = () => {
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [fieldValidation, setFieldValidation] = useState(false);
-    const { token, setToken, setStudent } = useContext(GlobalContext);
+
     const router = useRouter();
     const { Register } = StudentService();
 
@@ -28,7 +28,6 @@ const Register = () => {
             address === "" ||
             mobile === "" ||
             password === ""
-
         ) {
             setFieldValidation(true);
             return true;
@@ -63,7 +62,6 @@ const Register = () => {
                 toast.error(register?.data?.message);
             }
         }
-
     }
 
     return (
